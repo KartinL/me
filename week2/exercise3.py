@@ -7,7 +7,8 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    return None
+    
+    return (a_number%2) == 1
 
 
 def fix_it(moves=True, should_move=True):
@@ -25,7 +26,17 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements. 
     As an extra challenge, see if you can get that down to three.
     """
-    return None
+
+    if (moves == True):
+        if (should_move == True):
+            return "No Problem"
+        else: 
+            return "Duct Tape"
+    else:
+        if (should_move == True):
+            return "WD-40"
+        else:
+            return "No Problem"
 
 
 def loops_1a():
@@ -35,7 +46,12 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+
+    for loop in range(0,9):
+
+	    answer = ['*'] * 10
+
+    return answer
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -44,8 +60,13 @@ def loops_1c(number_of_items=5, symbol="#"):
     Using any method, return a list of number_of_items items, each one a
     string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
-    """
-    return None
+    """ 
+
+    for loop in range(0,4):
+
+        answer = [symbol] * number_of_items
+
+    return answer 
 
 
 def loops_2():
@@ -66,7 +87,12 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+
+    for loop in range(0,9):
+
+        answer = [ ['*'] * 10 ] * 10
+
+    return answer
 
 
 def loops_3():
@@ -90,7 +116,14 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+
+    # for i in range(10):
+    #     for j in range(10):
+    #         answer = [str(i)]
+
+    answer = [[str(i) for j in range(10)] for i in range(10)]
+
+    return answer
 
 
 def loops_4():
@@ -110,7 +143,9 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    answer = [[str(j) for j in range(10)] for i in range(10)]
+
+    return answer
 
 
 def loops_5():
@@ -137,7 +172,19 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    return None
+
+    # print('')
+    # for i in range (10):
+    #     for j in range (5):
+
+    #         print ("'(i" + str(i) + ", j" + str(j) +")'", end='')
+        
+    #     print('')
+    
+
+    answer = [["(i" + str(i) + ", j" + str(j) +")" for j in range(5)] for i in range(10)]
+
+    return answer
 
 
 def loops_6():
@@ -160,7 +207,15 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+
+    # for i in range(11):
+    #     for j in range(i):
+    #             print(j, end='')
+    #     print('')
+
+    answer = [[str(j) for j in range(i+1)] for i in range(10)]
+    print(answer)
+    return answer
 
 
 def loops_7():
@@ -184,7 +239,39 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+
+    # for i in range(5):
+    #     for j in range(9):
+    #         if i == 0 and j!=4:
+    #             print(" ", end="")
+    #         elif i == 0:
+    #             print("*", end="")
+    #         elif i == 1 and j!=3 and j!=4 and j!=5:
+    #             print(" ", end="")
+    #         elif i == 1:
+    #             print("*", end="")
+    #         elif i == 2 and j!=2 and j!=3 and j!= 4 and j!=5 and j!=6:
+    #             print(" ", end="")
+    #         elif i == 2:
+    #             print("*", end="")
+    #         elif i == 3 and (j == 0 or j == 8):
+    #             print(" ", end="")
+    #         elif i == 3:
+    #             print("*", end="")
+    #         else:
+    #             print("*", end="")      
+    #     print('')
+
+    j=4
+    answer=[]
+    for i in range(1, 10, 2):
+        answer.append([' ']*j+i*['*']+[' ']*j)
+        j=j-1
+
+    print(answer)
+    # answer = [[str(' '*j+i*'*') for i in range(1, 10, 2)]]
+
+    return answer
 
 
 def lp(some_kind_of_list, exercise_name):
