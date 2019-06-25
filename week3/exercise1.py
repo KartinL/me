@@ -4,23 +4,43 @@
 Modify each function until the tests pass.
 """
 
+# cd me if youre not in the me folder 
+# python3 ../course/week3/tests.py
 
 def loop_ranger(start, stop=None, step=1):
     """Return a list of numbers between start and stop in steps of step.
 
     Do this using any method apart from JUST using range()
-    The look up the docs for range(), you can answer this with just the range 
+    Then look up the docs for range(), you can answer this with just the range 
     function, but we'd like you to do it the long way, probably using a loop.
     """
-    return None
 
+    # count = 0
+    # while start <= stop:     
+    #     start = count - 1 
+    # answer = count 
+    # return answer 
+
+    i = []
+    while start < stop:
+        i.append(start)
+        start = start + step 
+    else:
+        return i 
 
 def lone_ranger(start, stop, step):
     """Duplicate the functionality of range.
 
     Look up the docs for range() and wrap it in a 1:1 way
     """
-    return None
+
+    answer = []
+
+    for i in range(start, stop, step):
+
+        answer.append(i)
+
+    return answer
 
 
 def two_step_ranger(start, stop):
@@ -29,7 +49,14 @@ def two_step_ranger(start, stop):
     Sometimes you want to hide complexity.
     Make a range function that always has a step size of 2
     """
-    return None
+    
+    # answer = []
+    
+    # for i in range(start, stop, 2):
+    #     answer.append(i)
+
+    print(start, stop)
+    return list(range(start, stop, 2))
 
 
 def stubborn_asker(low, high):
@@ -40,7 +67,38 @@ def stubborn_asker(low, high):
 
     Look up the docs for input
     """
-    return None
+
+    for i in range(low, high): 
+
+        print(i)
+
+    if low < i < high:
+
+        print ("true")
+
+    else:
+
+        print ("false")
+
+    answer = i
+
+    return answer 
+
+    # n = input(0)
+    # n = int(n)
+    # if n < 0:
+    #     print("yes")
+    # else:
+    #     print("no")
+
+
+    # print(low, high)
+
+    # answer = 35
+
+    # return answer 
+
+    # # return range(low,high)
 
 
 def not_number_rejector(message):
@@ -50,7 +108,30 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+
+    message = 5
+
+    for i in str(message):
+
+        print (i)
+
+    answer = 5
+
+    return answer 
+
+    # for i in int(message):
+
+    #     print str(i)
+     
+    # while True:
+    #     try:
+    #         x = int(raw_input('Enter your number: '))
+    #     except ValueError:
+    #         print 'That is not a number! Try again!'
+    #     if x in [1, 2]:
+    #         break
+    
+    # return
 
 
 def super_asker(low, high):
@@ -61,7 +142,20 @@ def super_asker(low, high):
     Try to call at least one of the other functions to minimise the
     amount of code.
     """
-    return None
+
+    answer = [int]
+
+    for i in range(low, high):
+
+        if low < i < high:
+
+            print("true")
+
+        else:
+
+            print("false")
+
+    return answer 
 
 
 if __name__ == "__main__":
