@@ -55,7 +55,6 @@ def binary_search(low, high, actual_number):
         elif (x > actual_number):
             high = int(x)
     
-
     return {"guess": guess, "tries": tries}
 
 
