@@ -25,12 +25,43 @@ def binary_search(low, high, actual_number):
     """
     tries = 0
     guess = 0
+
+    # first = 0
+    # last = len(int(high)-1
+    # found = False:
+
+    # while first<=last and not found:
+    #     midpoint = (first + last)//2
+    #     if actual_number == range(low, high)[midpoint]:        
+    #         found =  True 
+    #     else:
+    #         if actual_number < range(low, high)[midpoint]:
+    #             last = midpoint-1
+    #         else:
+    #             if actual_number > midpoint:
+    #                 first = midpoint+1  
+
+    while True:
+        x = (low + high)/2
+        tries = tries + 1 
+        if (int(x) == actual_number): 
+            guess = int(x)
+            break
+        elif (math.ceil(x) == actual_number):  
+            guess = math.ceil(x)
+            break              
+        elif (x < actual_number):
+            low = math.ceil(x)
+        elif (x > actual_number):
+            high = int(x)
+    
+
     return {"guess": guess, "tries": tries}
 
 
 if __name__ == "__main__":
-    print(binary_search(1, 100, 5))
-    print(binary_search(1, 100, 6))
+    print(binary_search(0, 100, 76))
+    print(binary_search(0, 100, 26))
     print(binary_search(1, 100, 95))
     print(binary_search(1, 51, 5))
     print(binary_search(1, 50, 5))
