@@ -1,6 +1,6 @@
 name: Kartin Leung
 studentNumber: z5061484
 officialEmail: king.leung@student.unsw.edu.au
-contactEmail: kartin_28@hotmail.com
-  firstBit:# this avoids spam, the @ is implied
-  otherBit:#
+contactEmail:
+  firstBit: kartin_28
+  otherBit: hotmail.com
