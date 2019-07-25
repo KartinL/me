@@ -1,17 +1,19 @@
 """All about IO."""
 
+# python3 ../course/week4/tests.py
 
 import json
 import os
 import requests
 import inspect
 import sys
+import time
 
 # Handy constants
 LOCAL = os.path.dirname(os.path.realpath(__file__))  # the context of this file
 CWD = os.getcwd()  # The curent working directory
 if LOCAL != CWD:
-    print("Be careful that your relative paths are")
+    print("Be care`ful that your relative paths are")
     print("relative to where you think they are")
     print("LOCAL", LOCAL)
     print("CWD", CWD)
@@ -33,10 +35,50 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
-    json_data = open(LOCAL + "/lazyduck.json").read()
 
-    data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    # script_dir = os.path.dirname(__file__)
+    # file_path = os.path.join(script_dir, "/lazyduck.json"
+    # print(file_path)
+    # fptr = open(file_path, 'r')
+
+    # script_dir = os.path.dirname(__file__) 
+    # rel_path = "/lazyduck.json"
+    # abs_file_path = os.path.join(script_dir, rel_path)
+    
+    # open and read json file 
+    json_data = open(LOCAL + "/lazyduck.json").read()  
+
+    # convert from json string to a dictionary 
+    data = json.loads(json_data) 
+
+    # print last name 
+
+    last = data["results"][0]["name"]["last"]
+    pw = data["results"][0]["login"]["password"]
+    num = data["results"][0]["location"]["postcode"] + int(data["results"][0]["id"]["value"])
+    
+    #  convert it to integers 
+
+    # for lastName, password in dict.items():
+    #     print(lastName, password)
+    # mode = "r"
+    # print results.get("lastName")
+    # print (keys_needed)  
+
+        # with open('https://randomuser.me/', 'r') as fp:
+        #     obj = json.load(fp)
+
+    # data = json.dumps(json_data)
+    # data = json.loads(json_data)
+    # print (json_data)
+
+    # thisdict= {/lazyduck.json}
+
+    # lastName = thisdict["lastName"]
+    # password = thisdict["password"]
+    # postcodePlusID = thisdict["postcode + ID"]
+
+    return {"lastName": last, "password": pw, "postcodePlusID": num}
 
 
 def wordy_pyramid():
@@ -74,7 +116,80 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &minLength=
     """
-    pass
+
+    key = "91xyilewfpmpj4yxy8czdk62875bkkljjdqchl0zkklspme95"
+    template = "http://api.wordnik.com/v4/words.json/randomWords?api_key={key}&minLength={minLength}&maxLength={maxLength}&limit={limit}"
+    # http://api.wordnik.com/v4/words.json/randomWords?api_key=91xyilewfpmpj4yxy8czdk62875bkkljjdqchl0zkklspme95&minLength=3&maxLength=20&limit=18
+    minLength = 3
+    maxLength = 20
+    limit = 1
+    step = 2
+    pyramid_list = []
+    
+    for length in range(minLength, maxLength, step):
+        time.sleep(1)
+        url = template.format(base=template, minLength=length, maxLength=length, limit=limit, key=key)
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            # print(the_json)
+            # print(list(a.values()))
+            a = the_json[0]["word"]
+            # print(a)
+            pyramid_list.append(a)
+    
+    for item in pyramid_list:
+        print(item)
+
+    for length in range(maxLength, minLength, -step):
+        time.sleep(1)
+        url = template.format(base=template, minLength=length, maxLength=length, limit=limit, key=key)
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            # print(the_json)
+            # print(list(a.values()))
+            a = the_json[0]["word"]
+            # print(a)
+            pyramid_list.append(a)
+
+    for item in pyramid_list:
+        print(item)
+
+            # b = the_joson[]["word"]
+            # print(a.values())
+
+            # print(b)
+            # print()
+            # if len(a) == 3:
+            # a = the_json["word"]
+            # print(a)
+            # print(len(a))
+            # print(min((word for word in i if word), key=len))
+            # print(str(min(a, key=len)))
+
+            # if len(a) == 3:
+            #     pyramid_list.append()
+            #     # print(pyramid_list.append)
+            #     a = len(a) + 2
+            #     if len(a) == 20:
+            #         a = len(a) - 2
+            #         if len(a) == 4:
+                        # break
+
+
+def get_poke_height(id):
+
+    template = "https://pokeapi.co/api/v2/pokemon/{id}"
+    url = template.format(id=i)
+    r = requests.get(url)
+    if r.status_code is 200:
+        the_json = json.loads(r.text)
+        # converts it into a dictionary 
+        height = the_json['height']
+        return height
+
+
 
 
 def pokedex(low=1, high=5):
@@ -91,13 +206,41 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    template = "https://pokeapi.co/api/v2/pokemon/{id}"
+    # template = "https://pokeapi.co/api/v2/pokemon/{id}"
 
-    url = template.format(base=base, id=5)
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
-    return {"name": None, "weight": None, "height": None}
+    # url = template.format(id=5)
+    # r = requests.get(url)
+    # if r.status_code is 200:
+    #     the_json = json.loads(r.text)
+    #     the_json = r.json() (does the same as the line above)
+    #     print(the_json)
+    
+
+
+    template = "https://pokeapi.co/api/v2/pokemon/{id}"
+    
+    max_height = 0 
+    for i in range(low, high):
+        url = template.format(id=i)
+        r = requests.get(url)
+        if r.status_code is 200:
+            the_json = json.loads(r.text)
+            # converts it into a dictionary 
+            x = the_json['height']
+            if x > max_height: 
+                max_height = x
+                height = the_json['height']
+                # this gets the info from the json dictionary 
+                weight = the_json['weight']
+                name = the_json['name']
+        
+    # print(the_json['weight'])
+
+    # weight = the_json['weight']
+    # height = the_json['height']
+    # name = the_json['name']
+
+    return {"name": name, "weight": weight, "height": height}
 
 
 def diarist():
@@ -114,7 +257,14 @@ def diarist():
          the test will have nothing to look at.
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
-    pass
+
+    f = open("lasers.pew","w+")
+    data = open("Trispokedovetiles(laser).gcode").read()
+    count = str(data.count('M10 P1'))
+    print(count)
+    f.write(count)
+    f.close()
+
 
 
 if __name__ == "__main__":
