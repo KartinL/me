@@ -17,10 +17,8 @@ def greet(name="Towering Timmy"):
     return a string of "Hello" and the name argument.
     E.g. if given as "Towering Timmy" it should return "Hello Towering Timmy"
     """
-    # answer = "Hello"
-    # print(greet)
-    # return answer
-
+    answer = "Hello " + name
+    return anwser 
 
 def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
     """Count the number of 3s in the input_list.
@@ -169,19 +167,20 @@ def make_filler_text_dictionary():
 
 
     emptydict = {}
-    list1 = []
     for i in range(3,8):
+        list1 = []
         emptydict[i] = list1
         for x in range(0,3):
             url = template.format(id=i)
             r = requests.get(url)
             if r.status_code is 200:
                 gotten = r.text
-                print(gotten)
-                list1.update(gotten)
+                print(h)
+                h = list1.append(gotten)
+        emptydict.update({i:list1})
 
                 # new = list1.append(gotten)
-    # return emptydict
+    return emptydict
 
 def random_filler_text(number_of_words=200):
     """Make a paragraph of random filler text.
