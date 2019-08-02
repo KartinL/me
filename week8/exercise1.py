@@ -178,7 +178,7 @@ def make_filler_text_dictionary():
                 print(gotten)
                 h = list1.append(gotten)
                 print(h)
-                emptydict.update({i:list1})
+                emptydict.update({i:h})
                 # new = list1.append(gotten)
     return emptydict
 
