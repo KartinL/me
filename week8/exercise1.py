@@ -18,7 +18,7 @@ def greet(name="Towering Timmy"):
     E.g. if given as "Towering Timmy" it should return "Hello Towering Timmy"
     """
     answer = "Hello " + name
-    return anwser 
+    return answer 
 
 def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
     """Count the number of 3s in the input_list.
@@ -124,7 +124,7 @@ def best_letter_for_pets():
     for pet in pets:
         for letter in the_alphabet:
             max(letter, key=pet.count)
-            print(max(letter,key=pet.count))
+            # print(max(letter,key=pet.count))
 
     # for letter in the_alphabet:
     #     # count = 0
