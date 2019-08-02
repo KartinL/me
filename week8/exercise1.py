@@ -175,10 +175,10 @@ def make_filler_text_dictionary():
             r = requests.get(url)
             if r.status_code is 200:
                 gotten = r.text
-                print(h)
+                print(gotten)
                 h = list1.append(gotten)
-        emptydict.update({i:list1})
-
+                print(h)
+                emptydict.update({i:list1})
                 # new = list1.append(gotten)
     return emptydict
 
