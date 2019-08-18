@@ -169,7 +169,6 @@ def make_filler_text_dictionary():
     emptydict = {}
     for i in range(3,8):
         list1 = []
-        emptydict[i] = list1
         for x in range(0,3):
             url = template.format(id=i)
             r = requests.get(url)
@@ -178,8 +177,9 @@ def make_filler_text_dictionary():
                 print(gotten)
                 h = list1.append(gotten)
                 print(h)
-                emptydict.update({i:h})
-                # new = list1.append(gotten)
+                emptydict.update({i:list1})
+        
+        # emptydict[i] = list1
     return emptydict
 
 def random_filler_text(number_of_words=200):
@@ -212,7 +212,17 @@ def fast_filler(number_of_words=200):
     If you get this one to work, you are a Very Good Programmer™!
     """
 
-    return paragraph
+    import os
+    import json
+    if os.path.exists("dict_race.json"):
+        #load it #
+        pass
+    else:
+        # create it 
+        my_string = random_filler_text(number_of_words)
+        #save my file 
+        json.dumps
+    return ""
 
 
 if __name__ == "__main__":
